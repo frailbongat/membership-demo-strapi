@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "products",
+  "collectionName": "lessons",
   "info": {
-    "name": "product",
-    "description": ""
+    "name": "lesson"
   },
   "options": {
     "increments": true,
@@ -15,7 +14,11 @@
     "title": {
       "type": "string"
     },
-    "thumbnail": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "video": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -27,13 +30,12 @@
       "required": false,
       "pluginOptions": {}
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
+    "content": {
+      "type": "richtext"
     },
-    "categories": {
-      "collection": "category",
-      "via": "product"
+    "category": {
+      "model": "category",
+      "via": "lessons"
     }
   }
 }
